@@ -9,3 +9,8 @@ ESP8266WiFi-
 ESPAsyncTCP- ESPAsyncTCP by dvarrel (https://github.com/dvarrel/ESPAsyncTCP)
 ESPAsyncWebServer- https://github.com/me-no-dev/ESPAsyncWebServer
 WebSerial- WebSerial by Ayush Sharma()
+
+ArduinoJson- ArduinoJson by Benoit Blanchon (https://arduinojson.org/?utm_source=meta&utm_medium=library.properties)
+
+MS5837- https://github.com/bluerobotics/BlueRobotics_MS5837_Library
+** change File **
