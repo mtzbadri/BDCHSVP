@@ -1,54 +1,42 @@
-#include <Wire.h> // Library for I2C communication
-#include <SPI.h>  // not used here, but needed to prevent a RTClib compile error
+#include <Wire.h>
 #include <RTClib.h>
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <WebSerial.h>
 
-.
-const char* password ="00000000";
+const char* ssid = "BDCHSPheonix";  // Define your Access Point SSID here
+const char* password = "7861105253";  // Define your Access Point password here
 
+AsyncWebServer server(80);
 
+RTC_DS1307 RTC;
 
-AsyncWebServer server (80);
+void setup() {
+  Serial.begin(57600);
+  Wire.begin();
+  RTC.begin();
+  RTC.adjust(DateTime(__DATE__, __TIME__));
+  Serial.println("Time and date set");
 
+  Serial.println("Starting Access Point");
+  Serial.print("SSID: ");
+  Serial.println(ssid);
+  WiFi.softAP(ssid, password);
+  Serial.print("IP Address: ");
+  Serial.println(WiFi.softAPIP());
 
-
- 
-RTC_DS1307 RTC;     // Setup an instance of DS1307 naming it RTC
- 
-void setup () 
-{
-  Serial.begin(57600); // Set serial port speed
-  Wire.begin(); // Start the I2C
-  RTC.begin();  // Init RTC
-  RTC.adjust(DateTime(__DATE__, __TIME__));  // Time and date is expanded to date and time on your computer at compiletime
-  Serial.print("Time and date set");
-  delay(3000);
-Serial.print ("Starting Access Point");
-Serial.println (ssid);
-WiFi.softAP (ssid, password) ;
-
-  Serial.print ("Ip Address: ");
-  Serial.println (WiFi.softAPIP ());
-
-WebSerial.begin (&server);
-server.begin ();
-
+  WebSerial.begin(&server);
+  server.begin();
 }
- 
-void loop() {
-  // Get the current time from the RTC module
-  DateTime now = RTC.now();
 
-  // Format the date and time as a string
+void loop() {
+  DateTime now = RTC.now();
   String datetime = String(now.hour()) + ":" + String(now.minute()) + ":" + String(now.second());
 
-  // Print the date and time to the serial monitor in the browser
   WebSerial.print("Team Number: 6189162");
   WebSerial.println();
-  WebSerial.print("                          Time in UTC: ");
+  WebSerial.print("Time in UTC: ");
   WebSerial.println(datetime);
 
   delay(1000);
