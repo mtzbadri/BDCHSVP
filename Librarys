@@ -1,1 +1,11 @@
-W
+ESP8266WiFi- 
+https://www.instructables.com/Steps-to-Setup-Arduino-IDE-for-NODEMCU-ESP8266-WiF/
+(http://arduino.esp8266.com/stable/package_esp8266com_index.json)
+
+
+Wire-
+RTClib- RTClib by Adafruit (https://github.com/adafruit/RTClib)
+ESP8266WiFi- 
+ESPAsyncTCP- ESPAsyncTCP by dvarrel (https://github.com/dvarrel/ESPAsyncTCP)
+ESPAsyncWebServer- https://github.com/me-no-dev/ESPAsyncWebServer
+WebSerial- WebSerial by Ayush Sharma()
